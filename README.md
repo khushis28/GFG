@@ -1,3 +1,3 @@
 # GFG
-GFG School level problems: 
+GFG School level problems
 
