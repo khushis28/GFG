@@ -1,3 +1,2 @@
 # GFG
-GFG School level problems
-
+Welcome to the GeeksforGeeks (GFG) Repository! This repository is dedicated to providing a comprehensive collection of code solutions, and resources related to programming topics found on GeeksforGeeks. Whether you're preparing for coding interviews, learning new algorithms and data structures, or simply looking for programming resources, this repository aims to be a valuable reference. Happy Coding !
