@@ -105,26 +105,47 @@ bool compare(Node* prev, Node* new_node, unordered_set<Node*>& prev_vis, unorder
 //         neighbors = _neighbors;
 //     }
 // };
+
+
 class Solution {
 public:
-unordered_map<Node* , Node*> copies;
-
     Node* cloneGraph(Node* node) {
-         if (!node) {
-            return NULL;
+        if (!node) {
+            return nullptr;
         }
-        //if the node is not present in the map , create a copy of it
-        if(copies.find(node) == copies.end()) {
-            // create a new node with the same value as the original node
-        copies[node] = new Node(node-> val, {});
-        //copy the neighbors of the original node recursively 
-        for(Node* neighbor: node-> neighbors){
-            copies[node] -> neighbors.push_back(cloneGraph(neighbor));
+
+        unordered_map<Node*, Node*> visited;
+
+        return cloneHelper(node, visited);
+    }
+
+private:
+    Node* cloneHelper(Node* originalNode, unordered_map<Node*, Node*>& visited) {
+        if (!originalNode) {
+            return nullptr;
         }
+
+        // Check if the node is already visited
+        if (visited.find(originalNode) != visited.end()) {
+            return visited[originalNode];
         }
-        return copies[node];
+
+        // Create a copy of the current node
+        Node* clonedNode = new Node(originalNode->val);
+
+        // Mark the current node as visited
+        visited[originalNode] = clonedNode;
+
+        // Recursively clone the neighbors of the current node
+        for (Node* neighbor : originalNode->neighbors) {
+            clonedNode->neighbors.push_back(cloneHelper(neighbor, visited));
+        }
+
+        return clonedNode;
     }
 };
+
+
 
 
 //{ Driver Code Starts.
